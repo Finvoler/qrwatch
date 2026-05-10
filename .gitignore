@@ -1,0 +1,85 @@
+# Local machine and editor state
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Secrets and local environment overrides
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.pytest-tmp/
+pytest-cache-files-*/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Generated dependency/build output
+node_modules/
+.next/
+.nuxt/
+dist/
+build/
+coverage/
+
+# Generic temporary output
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+tmp/
+temp/
+
+# Local agent or tool state
+.codex/
+.cache/
+
+# Harness run artifacts are local by default.
+# Force-add selected evidence only when it explains a decision or regression.
+artifacts/**
+!artifacts/
+!artifacts/**/
+!artifacts/**/.gitkeep
+
+# Eval results can be large and machine-specific; benchmark definitions stay tracked.
+evals/results/**
+!evals/results/
+!evals/results/.gitkeep
+
+# Runtime task definitions in queue/ are versionable.
+# In-progress and historical task state is local by default.
+runtime/tasks/active/**
+!runtime/tasks/active/
+!runtime/tasks/active/.gitkeep
+runtime/tasks/completed/**
+!runtime/tasks/completed/
+!runtime/tasks/completed/.gitkeep
+runtime/tasks/blocked/**
+!runtime/tasks/blocked/
+!runtime/tasks/blocked/.gitkeep
+
+# Local runtime databases or lock files
+runtime/**/*.db
+runtime/**/*.sqlite
+runtime/**/*.sqlite3
+runtime/**/*.lock

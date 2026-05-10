@@ -1,0 +1,12 @@
+{
+  "id": "structure-validation",
+  "suite": "smoke",
+  "mode": "command",
+  "description": "Verify that the harness structural and guardrail validators pass.",
+  "commands": [
+    "{python} tools/validate_harness_structure.py"
+  ],
+  "required_artifacts": [],
+  "max_latency_seconds": 30,
+  "regression_policy": "fail_on_status_regression"
+}

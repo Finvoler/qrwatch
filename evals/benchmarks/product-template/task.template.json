@@ -1,0 +1,21 @@
+{
+  "id": "PROJECT_PLACEHOLDER(product-task-id)",
+  "title": "PROJECT_PLACEHOLDER(product-task-title): product benchmark task title.",
+  "status": "queued",
+  "parent": null,
+  "priority": 100,
+  "created_at": "PROJECT_PLACEHOLDER(created-at): ISO-8601 timestamp.",
+  "updated_at": "PROJECT_PLACEHOLDER(updated-at): ISO-8601 timestamp.",
+  "prompt": "PROJECT_PLACEHOLDER(product-task-prompt): describe one narrow product-specific task grounded in the target repository.",
+  "acceptance": [
+    "PROJECT_PLACEHOLDER(product-acceptance-behavior): observable product behavior or artifact changed as expected.",
+    "PROJECT_PLACEHOLDER(product-acceptance-validation): relevant project validation command passes."
+  ],
+  "validation_commands": [
+    "PROJECT_PLACEHOLDER(product-validation-command): replace with a safe project validation command."
+  ],
+  "commit_policy": "never",
+  "run_ids": [],
+  "artifacts": [],
+  "notes": "Template only. Copy into a concrete benchmark directory before running."
+}

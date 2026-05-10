@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "suite": "smoke",
+  "updated_at": "2026-04-30T15:33:27.737107+00:00",
+  "commit": "7b895ac",
+  "benchmarks": {
+    "prompt-preview": {
+      "id": "prompt-preview",
+      "mode": "preview",
+      "status": "passed",
+      "commands": [
+        {
+          "command": "{python} tools/harness_loop.py --once",
+          "return_code": 0,
+          "passed": true
+        }
+      ]
+    },
+    "structure-validation": {
+      "id": "structure-validation",
+      "mode": "command",
+      "status": "passed",
+      "commands": [
+        {
+          "command": "{python} tools/validate_harness_structure.py",
+          "return_code": 0,
+          "passed": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+name: qrwatch
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - mss==10.2.0
+      - opencv-python==4.13.0.92
+      - pillow==12.2.0
+      - numpy==2.4.4
+      - python-dotenv==1.2.2
+      - requests==2.33.1
+      - pytest==9.0.3
+      - pystray==0.19.5
+      - pyinstaller==6.17.0
