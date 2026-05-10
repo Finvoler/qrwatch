@@ -1,4 +1,0 @@
-interface:
-  display_name: "Apply Harness Framework"
-  short_description: "Apply this harness scaffold to a real repository."
-  default_prompt: "Apply the harness framework to this repository using evidence-backed facts, explicit project placeholders for unknowns, and the framework validators."

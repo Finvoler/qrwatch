@@ -1,36 +1,8 @@
 # Packaging
 
-Status: applied.
+QRWatch uses PyInstaller to build a Windows executable.
 
-QR Watch has a tracked PyInstaller build path for producing a local Windows executable from the `qrwatch` Conda environment.
-
-## Entrypoint
-
-The packaged executable uses:
-
-```text
-src/qrwatch/packaged.py
-```
-
-Default packaged behavior:
-
-- Starts the tray UI when no explicit mode is supplied.
-- Reads `%LOCALAPPDATA%\QRWatch\config.env` by default.
-- Creates `%LOCALAPPDATA%\QRWatch\config.env` if it does not exist.
-- Creates the starter config in dry-run mode with no credentials.
-- Keeps runtime logs, deduplication state, and optional screenshots under `%LOCALAPPDATA%\QRWatch\` unless the config overrides them.
-
-The packaged launcher still accepts normal CLI flags:
-
-```powershell
-.\dist\QRWatch\QRWatch.exe --config C:\path\to\config.env --tray
-.\dist\QRWatch\QRWatch.exe --capture-once
-.\dist\QRWatch\QRWatch.exe --run
-```
-
-`--config PATH` and `QRWATCH_CONFIG_FILE` point to explicit config files and must refer to existing files. The automatic starter-file behavior applies only to the default packaged config path.
-
-## Build Command
+## Build
 
 From the repository root:
 
@@ -41,31 +13,23 @@ From the repository root:
 Equivalent direct command:
 
 ```powershell
-conda run -n qrwatch pyinstaller --noconfirm --clean packaging\qrwatch.spec
+pyinstaller --noconfirm --clean packaging\qrwatch.spec
 ```
 
-The tracked PyInstaller spec is `packaging/qrwatch.spec`. Build output is generated under ignored `build/` and `dist/` folders. QR Watch uses PyInstaller's one-folder layout so startup does not depend on temporary one-file extraction. The expected executable path is:
+Build output is written to ignored `build/` and `dist/` directories. The expected executable path is `dist\QRWatch\QRWatch.exe`.
 
-```text
-dist/QRWatch/QRWatch.exe
-```
+## Packaged Behavior
 
-Do not commit files from `build/`, `dist/`, `%LOCALAPPDATA%\QRWatch\`, screenshots, QR payloads, or credential-bearing config files.
+The packaged launcher uses `src/qrwatch/packaged.py` and defaults to tray mode when no explicit mode is supplied.
+
+On first launch it uses `%LOCALAPPDATA%\QRWatch\config.env` as the default config path and creates that file if it does not already exist.
 
 ## Validation
 
-Safe repository validation:
+After installing the environment, these checks are safe:
 
 ```powershell
 python -m pytest
-python tools\validate_harness_structure.py
-```
-
-Local executable validation after a build:
-
-```powershell
 .\dist\QRWatch\QRWatch.exe --capture-once
 .\dist\QRWatch\QRWatch.exe --tray
 ```
-
-One-shot capture may fail on machines where screenshot backends are unavailable or the session is not interactive. A successful tray launch should not require credentials because the starter config is dry-run by default.

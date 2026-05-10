@@ -1,27 +1,16 @@
 # Time Conventions
 
-Status: implemented.
+QRWatch uses local time for user-facing output and UTC for internal deduplication state.
 
-QR Watch uses two time conventions because user-facing runtime evidence and
-internal deduplication state have different needs.
+## Local Time
 
-## User-Facing Time
+Use local time for:
 
-Use the system local time zone for timestamps that a person reads directly:
+- log timestamps
+- CLI capture timestamps
+- notification text shown to users
+- retained screenshot filenames
 
-- log timestamps emitted by Python logging.
-- captured frame metadata shown by the CLI.
-- notification text such as `Detected at`.
-- retained screenshot filenames.
+## UTC
 
-This makes local troubleshooting match the Windows clock and the user's tray
-session.
-
-## Internal State Time
-
-Use UTC for persisted deduplication timestamps in the JSON state file.
-
-This keeps duplicate suppression stable if the system time zone changes, and it
-avoids ambiguous comparisons around daylight-saving transitions. Raw QR payloads
-are not stored in this state; only payload hashes and timestamps are persisted.
-
+Use UTC for persisted deduplication timestamps in the JSON state file so duplicate suppression remains stable across time zone changes.

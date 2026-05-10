@@ -33,15 +33,16 @@ htmlcov/
 venv/
 env/
 
-# Generated dependency/build output
-node_modules/
-.next/
-.nuxt/
-dist/
+# Generated build output
 build/
+dist/
 coverage/
 
-# Generic temporary output
+# Local artifacts and temporary output
+artifacts/**
+!artifacts/
+!artifacts/**/
+!artifacts/**/.gitkeep
 *.log
 *.tmp
 *.temp
@@ -49,37 +50,3 @@ coverage/
 *.orig
 tmp/
 temp/
-
-# Local agent or tool state
-.codex/
-.cache/
-
-# Harness run artifacts are local by default.
-# Force-add selected evidence only when it explains a decision or regression.
-artifacts/**
-!artifacts/
-!artifacts/**/
-!artifacts/**/.gitkeep
-
-# Eval results can be large and machine-specific; benchmark definitions stay tracked.
-evals/results/**
-!evals/results/
-!evals/results/.gitkeep
-
-# Runtime task definitions in queue/ are versionable.
-# In-progress and historical task state is local by default.
-runtime/tasks/active/**
-!runtime/tasks/active/
-!runtime/tasks/active/.gitkeep
-runtime/tasks/completed/**
-!runtime/tasks/completed/
-!runtime/tasks/completed/.gitkeep
-runtime/tasks/blocked/**
-!runtime/tasks/blocked/
-!runtime/tasks/blocked/.gitkeep
-
-# Local runtime databases or lock files
-runtime/**/*.db
-runtime/**/*.sqlite
-runtime/**/*.sqlite3
-runtime/**/*.lock
